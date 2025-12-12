@@ -1,16 +1,20 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -g
+CFLAGS= -I $(INCLUDE) -I $(INCLUDE_LIBFT) -Wall -Wextra -Werror -MMD -MP -g
 MAKEFLAGS+= --no-print-directory
 HEADER=push_swap.h
 NAME=push_swap
 
 BUILD_DIR=obj/
-LIBFT=libft/libft.a
+INCLUDE_LIBFT=include/libft/
+INCLUDE=include/
+SRC_DIR=src/
+LIBFT=include/libft/libft.a
 
 SRC= push_swap.c \
-	parsing.c \
+	parsing.c
 
 OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
+DEPS= $(SRC:%.c=$(BUILD_DIR)%.d)
 OBJ_DIR= $(sort $(shell dirname $(OBJ)))
 
 # SRC_BONUS=
@@ -20,13 +24,13 @@ OBJ_BONUS= $(SRC_BONUS:%.c=$(BUILD_DIR)%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $(LIBFT) $^ -o $@
 	@echo "push_swap link"
 
 $(LIBFT):
-	@make -C libft/
+	@make -C include/libft
 
-$(BUILD_DIR)%.o: %.c | $(OBJ_DIR)
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
 bonus: $(NAME) $(OBJ_BONUS)
@@ -38,13 +42,15 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 clean:
+	@make -C include/libft/ clean
 	rm -rf $(BUILD_DIR) bonus
-	@make -C libft/ clean
 
 fclean: clean
 	rm -rf $(NAME)
-	@rm -f libft/libft.a
+	@rm -f $(LIBFT)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)

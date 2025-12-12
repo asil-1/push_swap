@@ -5,7 +5,6 @@ faire les fonctions
 
 idee parsing :
 - gerer les signes avant un chiffre +1 --4 +-etc
-- gerer les additions...
 - gerer le fait d'envoyer le strings dans des strings differentes ("1 2 3" 4 5 6 "") => split
 
 quand il y a un plus
