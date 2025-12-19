@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:44:29 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/08 17:49:08 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:29:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	{
 		(*lst)->prev = new;
 		new->next = *lst;
-		new->prev = NULL;
 	}
+	new->prev = NULL;
 	*lst = new;
 }
 
@@ -50,7 +50,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!new || !lst)
 		return ;
 	if (!*lst)
+	{
 		*lst = new;
+		new->prev = NULL;
+		new->next = NULL;
+	}
 	else
 	{
 		new->prev = ft_lstlast(*lst);

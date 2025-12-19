@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 12:00:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:31:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,22 @@ void	push(t_list **stack_start, t_list **stack_end)
 	if (!(*stack_start))
 		return ;
 	node_push = *stack_start;
-	*stack_end = node_push;
-	nfirst_node = (*stack_start)->next;
-	*stack_start = nfirst_node;
-	node_push->next = NULL;
+	nfirst_node = node_push->next;
 	nfirst_node->prev = NULL;
+	*stack_start = nfirst_node;
+	if (*stack_end)
+	{
+		node_push->prev = NULL;
+		node_push->next = *stack_end;
+		(*stack_end)->prev = node_push;
+		*stack_end = node_push;
+	}
+	else
+	{
+		node_push->prev = NULL;
+		node_push->next = NULL;
+		*stack_end = node_push;
+	}
 }
 
 void	rotate(t_list **stack)

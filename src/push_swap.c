@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 14:11:36 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:35:33 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,38 @@
 // 		}
 // 	}
 // }
+
+void	print(t_list *stack_a, t_list * stack_b)
+{
+	write (1, "sa:\tsb:\n", 9);
+
+	t_list	*tmp_a;
+	t_list	*tmp_b;
+	t_list	*tmp_a2;
+	t_list	*tmp_b2;
+
+	tmp_a = stack_a;
+	tmp_b = stack_b;
+
+	while (tmp_a || tmp_b)
+	{
+		if (tmp_a)
+		{
+			printf("%d", tmp_a->content);
+			tmp_a2 = tmp_a;
+			tmp_a = tmp_a->next;
+			free(tmp_a2);
+		}
+		if (tmp_b)
+		{
+			printf("\t%d", tmp_b->content);
+			tmp_b2 = tmp_b;
+			tmp_b = tmp_b->next;
+			free(tmp_b2);
+		}
+		printf("\n");
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -59,31 +91,8 @@ int	main(int argc, char **argv)
 	if (i == 3)
 		sort_3_nb(&stack_a); /*on peut ne faire apparaitre stack b que dans les fonctions*/
 	free(args);
+	push(&stack_a, &stack_b);
+	print(stack_a, stack_b);
 	// swap(&stack_a);
-	write (1, "sa: sb:\n", 9);
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-	t_list	*tmp_a2;
-	t_list	*tmp_b2;
-	tmp_a = stack_a;
-	tmp_b = stack_b;
-	while (tmp_a || tmp_b)
-	{
-		if (tmp_a)
-		{
-			printf("%d   ", tmp_a->content);
-			tmp_a2 = tmp_a;
-			tmp_a = tmp_a->next;
-			free(tmp_a2);
-		}
-		if (tmp_b)
-		{
-			printf("%d", tmp_b->content);
-			tmp_b2 = tmp_b;
-			tmp_b = tmp_b->next;
-			free(tmp_b2);
-		}
-		printf("\n");
-	}
 	return (0);
 }
