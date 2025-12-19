@@ -6,29 +6,41 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/12 14:50:25 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 12:02:11 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-//faire fonction push
-//faire apparaitre stack b a cote de stack a
-//mettre des choses dans stack b
-//push a
-//push b
+// void	presorting(t_list **stack_a, t_list **stack_b)
+// {
+// 	int	n;
+// 	int	delta;
+// 	int	threshold;
+
+// 	n = ft_lstsize(*stack_a);
+// 	delta = n / 20 + 7;
+// 	threshold = 0;
+// 	while (*stack_a)
+// 	{
+// 		if ((*stack_a)->content <= delta + threshold)
+// 		{
+// 			push()
+// 		}
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	char **args;
 	int	i;
 
 	if (argc <= 1)
 		return (0);
-	--argc;
-	++argv;
-	if (parsing(argv))
+	args = parsing(argc - 1, argv + 1);
+	if (!args)
 	{
 		ft_putendl_fd("Error", 2);
 		return (0);
@@ -36,13 +48,17 @@ int	main(int argc, char **argv)
 	i = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	while (i < argc)
+	while (args[i])
 	{
-		init_stack_a(&stack_a, ft_atoi(argv[i]));
+		init_stack_a(&stack_a, ft_atoi(args[i]));
+		free(args[i]);
 		i++;
 	}
-	reverse_rotate(&stack_b);
-	write (1, "stack_a :   stack_b ;\n", 22);
+	// if (i <= 2)
+		sort_3_nb(&stack_a); /*on peut ne faire apparaitre stack b que dans les fonctions*/
+	free(args);
+	// swap(&stack_a);
+	write (1, "sa: sb:\n", 9);
 	t_list	*tmp_a;
 	t_list	*tmp_b;
 	t_list	*tmp_a2;

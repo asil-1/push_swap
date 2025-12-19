@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/09 15:52:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/16 15:23:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_and_free(char *s1, char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);

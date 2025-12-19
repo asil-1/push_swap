@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:33:15 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/11 14:40:19 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:03:57 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,76 @@
 
 int	valid_argument(char *arg)
 {
-	size_t	isdigit;
+	size_t	digit;
 	size_t	i;
 
 	i = 0;
 	if (ft_atol(arg) < -2147483648 || ft_atol(arg) > 2147483647)
-			return (1);
-		while(arg[i])
-		{
-			isdigit = 0;
-			while (arg[i] && (arg[i] == '-' || arg[i] == '+'))
-				i++;
-			while (arg[i] && (arg[i] >= '0' && arg[i] <= '9'))
-			{
-				isdigit++;
-				i++;
-			}
-		}
-	if (isdigit > 0)
 		return (0);
-	else
+	while (arg[i])
+	{
+		digit = 0;
+		while (arg[i] && (arg[i] == '-' || arg[i] == '+'))
+			i++;
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		while (arg[i] && ft_isdigit(arg[i]))
+		{
+			digit++;
+			i++;
+		}
+	}
+	if (digit > 0)
 		return (1);
+	else
+		return (0);
 }
 
-int	parsing(char **argv)
+void	join_and_split(int argc, char **argv, char ***args)
+{
+	long	i;
+	char	*tmp;
+	char	*args_joins;
+
+	i = 0;
+	args_joins = ft_calloc((size_t)argc + 1, sizeof(int));
+	if (!args_joins)
+		return ;
+	i = 0;
+	while (argv[i])
+	{
+		tmp = ft_strjoin(argv[i], " ");
+		args_joins = ft_strjoin_and_free(args_joins, tmp);
+		if (!args_joins)
+			return ;
+		free(tmp);
+		i++;
+	}
+	*args = ft_split(args_joins, ' ');
+	free(args_joins);
+}
+
+char	**parsing(int argc, char **argv)
 {
 	long	i;
 	long	loop;
-	// char	*argsjoin;
-	// char	*tmp;
+	char	**args;
 
 	i = 0;
-	// while (argv[i])
-	// {
-	// 	tmp = ft_strjoin(argsjoin, argv[i]);
-	// 	argsjoin = tmp;
-	// 	i++;
-	// }
 	loop = 0;
-	while (argv[loop])
+	join_and_split(argc, argv, &args);
+	while (args[loop])
 	{
 		i = loop;
-		while (argv[i])
+		while (args[i])
 		{
-			if (valid_argument(argv[i]))
-				return (1);
+			if (!valid_argument(args[i]))
+				return (NULL);
 			i++;
-			if (ft_atol(argv[i]) == ft_atol(argv[loop]) && argv[i])
-				return (1);
+			if (ft_atol(args[i]) == ft_atol(args[loop]) && args[i])
+				return (NULL);
 		}
 		loop++;
 	}
-	return (0);
+	return (args);
 }
-
-

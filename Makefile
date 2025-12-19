@@ -12,7 +12,8 @@ LIBFT=include/libft/libft.a
 
 SRC= push_swap.c \
 	parsing.c \
-	utils.c
+	utils.c \
+	sort.c
 
 OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
 DEPS= $(SRC:%.c=$(BUILD_DIR)%.d)

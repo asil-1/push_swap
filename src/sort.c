@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/18 17:12:08 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/18 15:01:45 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/19 10:40:56 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "libft/include/libft.h"
-# include <unistd.h>
-# include <stdio.h> // a enlever
+void	sort_3_nb(t_list **stack_a)
+{
+	t_list	*node;
 
-char	**parsing(int argc, char **arg);
-void	init_stack_a(t_list	**stack_a, int content);
-void	swap(t_list **stack);
-void	rotate(t_list **stack);
-void	reverse_rotate(t_list **stack);
-void	push(t_list **stack_a, t_list **stack_b);
-void	sort_3_nb(t_list **stack_a);
+	node = *stack_a;
 
-#endif
+	if (node->content > node->next->content)
+		swap(&(*stack_a));
+	if (node->content > ft_lstlast(node)->content)
+		reverse_rotate(&(*stack_a));
+	// if (node->content > node->next->content)
+		// swap(&(*stack_a));
+}
+
+/*si besoin d'ameliorer traiter cas par cas*/

@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_and_free.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 19:18:09 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/16 14:51:46 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/16 15:21:34 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/16 15:31:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../include/libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_and_free(char *s1, char *s2)
 {
-	char	*join;
+	char	*result;
 	size_t	size;
+	size_t	i;
+	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	join = malloc(sizeof(char) * size);
-	if (!join)
+	result = malloc(sizeof(char) * size);
+	if (!result)
+	{
+		free(s1);
 		return (NULL);
-	ft_strlcpy(join, s1, size);
-	ft_strlcat(join, s2, size);
-	return (join);
+	}
+	i = 0;
+	while (s1[i])
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	i = -1;
+	j = ft_strlen(s1);
+	while (s2[++i] && (i + j) < size)
+		result[j + i] = s2[i];
+	result[j + i] = '\0';
+	free(s1);
+	return (result);
 }
-
-// int	main(void)
-// {
-// 	char	*s1 = NULL;
-// 	char	s2[] = " un test";
-// 	char	*result;
-
-// 	// result = ft_strlcat(s1, s2, ft_strlen(s1)+ft_strlen(s2) + 1);
-// 	result = ft_strjoin(s1, s2);
-// 	printf("%s\n", result);
-// 	free(result);
-// }

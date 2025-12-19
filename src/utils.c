@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/12 14:49:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 12:00:47 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,34 @@ void	init_stack_a(t_list	**stack_a, int content)
 
 void	swap(t_list **stack)
 {
-	t_list	*node;
+	t_list	*nfirst_node;
+	t_list	*third_node;
 
 	if (!(*stack))
 		return ;
-	node = (*stack)->next;
-	(*stack)->prev = node;
-	(*stack)->next = node->next;
-	node->next = *stack;
-	node->prev = NULL;
-	*stack = node;
+	nfirst_node = (*stack)->next;
+	third_node = nfirst_node->next;
+	third_node->prev = *stack;
+	(*stack)->prev = nfirst_node;
+	(*stack)->next = third_node;
+	nfirst_node->next = *stack;
+	nfirst_node->prev = NULL;
+	*stack = nfirst_node;
 }
 
-void	push(t_list **stack_a, t_list **stack_b)
+void	push(t_list **stack_start, t_list **stack_end)
 {
-	t_list	*node_b;
-	t_list	*node_a;
+	t_list	*node_push;
+	t_list	*nfirst_node;
 
-	if (!(*stack_a))
+	if (!(*stack_start))
 		return ;
-	node_b = (*stack_a);
-	*stack_b = node_b;
-	node_a = (*stack_a)->next;
-	*stack_a = node_a;
-	node_b->next = NULL;
-	node_a->prev = NULL;
+	node_push = *stack_start;
+	*stack_end = node_push;
+	nfirst_node = (*stack_start)->next;
+	*stack_start = nfirst_node;
+	node_push->next = NULL;
+	nfirst_node->prev = NULL;
 }
 
 void	rotate(t_list **stack)
@@ -58,7 +61,7 @@ void	rotate(t_list **stack)
 	if (!(*stack))
 		return ;
 	nfirst_node = (*stack)->next;
-	nlast_node = (*stack);
+	nlast_node = *stack;
 	last_node = ft_lstlast(*stack);
 	last_node->next = nlast_node;
 	nlast_node->prev = last_node;
@@ -75,7 +78,7 @@ void	reverse_rotate(t_list **stack)
 
 	if (!(*stack))
 		return ;
-	lfisrt_node = (*stack);
+	lfisrt_node = *stack;
 	nfirst_node = ft_lstlast(*stack);
 	nlast_node = nfirst_node->prev;
 	lfisrt_node->prev = nfirst_node;
