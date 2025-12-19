@@ -6,11 +6,28 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:01:45 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 13:32:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:15:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	sort_2_nb(t_list **stack)
+{
+	t_list	*node;
+
+	if (!(*stack))
+		return ;
+	if ((*stack)->content > (*stack)->next->content)
+	{
+		node = (*stack)->next;
+		(*stack)->prev = node;
+		(*stack)->next = NULL;
+		node->next = *stack;
+		*stack = node;
+		node->prev = NULL;
+	}
+}
 
 void	sort_3_nb(t_list **stack_a)
 {

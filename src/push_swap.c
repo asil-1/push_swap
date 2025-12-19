@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 13:13:40 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:11:36 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int	main(int argc, char **argv)
 		free(args[i]);
 		i++;
 	}
-	if (i <= 3)
+	if (i == 2)
+		sort_2_nb(&stack_a);
+	if (i == 3)
 		sort_3_nb(&stack_a); /*on peut ne faire apparaitre stack b que dans les fonctions*/
 	free(args);
 	// swap(&stack_a);
