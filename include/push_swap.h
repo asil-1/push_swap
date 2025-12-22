@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 18:25:55 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 20:41:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	push_to_target_increase(t_list **stack_start, t_list **stack_end);
 void	sort_three(t_list **stack);
 void	sort_four_five(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
+
+//truk_algo.c
 
 #endif

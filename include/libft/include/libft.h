@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/21 16:07:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 20:51:31 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 typedef struct s_list
 {
+	int				top_of_cost;
+	int				total_cost;
 	int				content;
 	struct s_list	*prev;
 	struct s_list	*next;
