@@ -6,22 +6,22 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 17:25:13 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 18:27:30 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:53:30 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 /**
-* @warning opti ca
-* @name change name
+* @warning Doesn't print "r..\n"
+* @todo change namde and opti
 */
 void	push_setup(int target, t_list **stack)
 {
 	while (((*stack)->next != NULL) && ((*stack)->content != target))
 	{
 		rotate(stack);
-		printf("rb\n");
+		printf("ra\n");
 	}
 }
 

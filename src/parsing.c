@@ -6,11 +6,24 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:33:15 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 11:59:52 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 19:21:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static void	free_split(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
 
 static int	valid_argument(char *arg)
 {
@@ -78,10 +91,16 @@ char	**parsing(int argc, char **argv)
 		while (args[i])
 		{
 			if (!valid_argument(args[i]))
+			{
+				free_split(args);
 				return (NULL);
+			}
 			i++;
 			if (ft_atol(args[i]) == ft_atol(args[loop]) && args[i])
+			{
+				free_split(args);
 				return (NULL);
+			}
 		}
 		loop++;
 	}

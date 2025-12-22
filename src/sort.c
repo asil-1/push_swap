@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 12:07:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 18:22:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 19:02:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ void	sort_four_five(t_list **stack_a, t_list **stack_b)
 	}
 	sort_three(stack_a);
 	while(*stack_b)
-	{
 		push_to_target_increase(stack_b, stack_a);
-		printf("pa\n");
-	}
 	push_setup(smaller_nb(*stack_a), stack_a);
 }
 
