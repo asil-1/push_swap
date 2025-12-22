@@ -12,6 +12,7 @@ LIBFT=include/libft/libft.a
 
 SRC= push_swap.c \
 	parsing.c \
+	functions.c \
 	utils.c \
 	sort.c
 
@@ -21,7 +22,7 @@ OBJ_DIR= $(sort $(shell dirname $(OBJ)))
 
 # SRC_BONUS=
 
-OBJ_BONUS= $(SRC_BONUS:%.c=$(BUILD_DIR)%.o)
+# OBJ_BONUS= $(SRC_BONUS:%.c=$(BUILD_DIR)%.o)
 
 all: $(NAME)
 
@@ -35,10 +36,10 @@ $(LIBFT):
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-bonus: $(NAME) $(OBJ_BONUS)
-	@ar rcs $(NAME) $(OBJ_BONUS)
-	@echo "push_swap_bonus link"
-	touch bonus
+# bonus: $(NAME) $(OBJ_BONUS)
+# 	@ar rcs $(NAME) $(OBJ_BONUS)
+# 	@echo "push_swap_bonus link"
+# 	touch bonus
 
 $(OBJ_DIR):
 	@mkdir -p $@

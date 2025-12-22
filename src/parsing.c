@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:33:15 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/18 14:03:57 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 11:59:52 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	valid_argument(char *arg)
+static int	valid_argument(char *arg)
 {
 	size_t	digit;
 	size_t	i;
@@ -39,7 +39,7 @@ int	valid_argument(char *arg)
 		return (0);
 }
 
-void	join_and_split(int argc, char **argv, char ***args)
+static void	join_and_split(int argc, char **argv, char ***args)
 {
 	long	i;
 	char	*tmp;

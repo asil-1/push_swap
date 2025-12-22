@@ -6,29 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 16:35:33 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 14:00:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-// void	presorting(t_list **stack_a, t_list **stack_b)
-// {
-// 	int	n;
-// 	int	delta;
-// 	int	threshold;
-
-// 	n = ft_lstsize(*stack_a);
-// 	delta = n / 20 + 7;
-// 	threshold = 0;
-// 	while (*stack_a)
-// 	{
-// 		if ((*stack_a)->content <= delta + threshold)
-// 		{
-// 			push()
-// 		}
-// 	}
-// }
 
 void	print(t_list *stack_a, t_list * stack_b)
 {
@@ -66,8 +48,8 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char **args;
-	int	i;
+	char	**args;
+	size_t	i;
 
 	if (argc <= 1)
 		return (0);
@@ -79,20 +61,15 @@ int	main(int argc, char **argv)
 	}
 	i = 0;
 	stack_a = NULL;
-	stack_b = NULL;
+	stack_b = NULL; /*la faire apparaitre dans la fonction de tri direct, la faire apparaitre ici ne sert que a l'afiichage*/
 	while (args[i])
 	{
 		init_stack_a(&stack_a, ft_atoi(args[i]));
 		free(args[i]);
 		i++;
-	}
-	if (i == 2)
-		sort_2_nb(&stack_a);
-	if (i == 3)
-		sort_3_nb(&stack_a); /*on peut ne faire apparaitre stack b que dans les fonctions*/
+	} /*mettre cette boucle dans une autre fonction*/
 	free(args);
-	push(&stack_a, &stack_b);
+	what_sort(&stack_a, &stack_b, i);
 	print(stack_a, stack_b);
-	// swap(&stack_a);
 	return (0);
 }

@@ -5,58 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 15:01:45 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 14:15:03 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/20 12:07:28 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/22 14:04:14 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	sort_2_nb(t_list **stack)
+int	smaller_nb(t_list *node)
 {
-	t_list	*node;
+	int	nb;
 
-	if (!(*stack))
-		return ;
-	if ((*stack)->content > (*stack)->next->content)
+	nb = node->content;
+	while (node->next != NULL)
 	{
-		node = (*stack)->next;
-		(*stack)->prev = node;
-		(*stack)->next = NULL;
-		node->next = *stack;
-		*stack = node;
-		node->prev = NULL;
+		if (node->content < nb)
+			nb = node->content;
+		node = node->next;
+	}
+	if (node->content < nb)
+		nb = node->content;
+	return (nb);
+}
+
+void	sort_three(t_list **stack)
+{
+	if ((*stack)->content > (*stack)->next->content
+		&& (*stack)->content > (*stack)->next->next->content)
+	{
+		rotate(stack);
+		printf("ra\n");
+	}
+	if ((*stack)->next->content > (*stack)->content
+		&& (*stack)->next->content > (*stack)->content
+		&& (*stack)->next->content > (*stack)->next->next->content)
+	{
+		reverse_rotate(stack);
+		printf("rra\n");
+	}
+	if ((*stack)->content > (*stack)->next->content
+		&& (*stack)->next->next->content > (*stack)->next->content
+		&& (*stack)->next->next->content > (*stack)->content)
+	{
+		swap(stack);
+		printf("sa\n");
 	}
 }
 
-void	sort_3_nb(t_list **stack_a)
+void	sort(t_list **stack_a, t_list **stack_b)
 {
-	while (1)
+	int			node_push;
+	t_targets	values;
+
+	push(stack_a, stack_b);
+	push(stack_a, stack_b);
+	while (ft_lstsize(*stack_a) > 3)
 	{
-		if ((*stack_a)->content > (*stack_a)->next->content)
-		{
-			swap(&(*stack_a));
-			printf("swapin (*stack_a).content %d\n", (*stack_a)->content);
-		}
-		if ((*stack_a)->content > ft_lstlast((*stack_a))->content)
-		{
-			reverse_rotate(&(*stack_a));
-			printf("rrotate (*stack_a).content %d\n", (*stack_a)->content);
-		}
-		if ((*stack_a)->content > (*stack_a)->next->content)
-		{
-			swap(&(*stack_a));
-			printf("swap2 (*stack_a).content %d\n", (*stack_a)->content);
-		}
-		if ((*stack_a)->next->content > (*stack_a)->next->next->content)
-		{
-			reverse_rotate(&(*stack_a));
-			printf("rrotate2 (*stack_a).content %d\n", (*stack_a)->content);
-			continue ;
-		}
-		else
-			break ;
+		node_push = (*stack_a)->content;
+		init_values(&values, node_push, *stack_b);
+		if (node_push > values.max || node_push < values.min)
+			push_setup(values.max, stack_b);
+		else if (node_push < values.max)
+			push_setup(values.inf, stack_b);
+		push(stack_a, stack_b);
+		printf("pb\n");
 	}
+	if (ft_lstsize(*stack_a) <= 2)
+		swap_two(stack_a);
+	else
+		sort_three(stack_a);
+	push_setup(values.max, stack_b);
 }
 
-/*si besoin d'ameliorer traiter cas par cas*/

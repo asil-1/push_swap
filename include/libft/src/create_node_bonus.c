@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:44:29 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/19 16:29:20 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/21 16:07:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	{
 		*lst = new;
 		new->prev = NULL;
-		new->next = NULL;
 	}
 	else
 	{
 		new->prev = ft_lstlast(*lst);
 		ft_lstlast(*lst)->next = new;
-		new->next = NULL;
 	}
+	new->next = NULL;
 }
 
 // #include <stdio.h>
