@@ -6,27 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 12:07:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 14:04:14 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:22:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	smaller_nb(t_list *node)
-{
-	int	nb;
-
-	nb = node->content;
-	while (node->next != NULL)
-	{
-		if (node->content < nb)
-			nb = node->content;
-		node = node->next;
-	}
-	if (node->content < nb)
-		nb = node->content;
-	return (nb);
-}
 
 void	sort_three(t_list **stack)
 {
@@ -52,28 +36,39 @@ void	sort_three(t_list **stack)
 	}
 }
 
+void	sort_four_five(t_list **stack_a, t_list **stack_b)
+{
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		push(stack_a, stack_b);
+		printf("pb\n");
+	}
+	sort_three(stack_a);
+	while(*stack_b)
+	{
+		push_to_target_increase(stack_b, stack_a);
+		printf("pa\n");
+	}
+	push_setup(smaller_nb(*stack_a), stack_a);
+}
+
 void	sort(t_list **stack_a, t_list **stack_b)
 {
-	int			node_push;
 	t_targets	values;
 
 	push(stack_a, stack_b);
 	push(stack_a, stack_b);
+	printf("pb\npb\n");
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		node_push = (*stack_a)->content;
-		init_values(&values, node_push, *stack_b);
-		if (node_push > values.max || node_push < values.min)
-			push_setup(values.max, stack_b);
-		else if (node_push < values.max)
-			push_setup(values.inf, stack_b);
-		push(stack_a, stack_b);
+		push_to_target_decrease(stack_a, stack_b);
 		printf("pb\n");
 	}
 	if (ft_lstsize(*stack_a) <= 2)
 		swap_two(stack_a);
 	else
 		sort_three(stack_a);
+	init_values(&values, (*stack_a)->content, *stack_b);
 	push_setup(values.max, stack_b);
 }
 

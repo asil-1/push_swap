@@ -12,7 +12,8 @@ LIBFT=include/libft/libft.a
 
 SRC= push_swap.c \
 	parsing.c \
-	functions.c \
+	init_fct.c \
+	push_fct.c \
 	utils.c \
 	sort.c
 

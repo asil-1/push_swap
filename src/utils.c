@@ -5,66 +5,117 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 11:58:53 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 14:01:34 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/22 17:28:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	init_stack_a(t_list	**stack_a, int content)
+/**
+* @brief Swap for more 2 nb.
+*/
+void	swap(t_list **stack)
 {
-	t_list	*node;
+	t_list	*nfirst_node;
+	t_list	*third_node;
 
-	node = ft_newnode(content);
-	ft_lstadd_back(stack_a, node);
-}
-
-void	init_values(t_targets *values, int nb, t_list *stack)
-{
-	int	content;
-	t_list	*tmp;
-
-
-	tmp = stack;
-	values->max = stack->content;
-	values->min = smaller_nb(stack);
-	while (stack->next != NULL)
-	{
-		content = stack->content;
-		if (content > values->max)
-			values->max = content;
-		if (content >= values->min && content < nb)
-			values->min = content;
-		stack = stack->next;
-	}
-	if (content > values->max)
-		values->max = content;
-	values->inf = values->min;
-	values->min = smaller_nb(tmp);
+	if (!(*stack))
+		return ;
+	nfirst_node = (*stack)->next;
+	third_node = nfirst_node->next;
+	third_node->prev = *stack;
+	(*stack)->prev = nfirst_node;
+	(*stack)->next = third_node;
+	nfirst_node->next = *stack;
+	nfirst_node->prev = NULL;
+	*stack = nfirst_node;
 }
 
 /**
-* @warning opti ca
+* @brief Sort 2 numbers.
+* @warning Not more 2 numbers.
+* @param stack
+* @details dfsdfsdfsdfsdfsdf
+* @return Nothing.
 */
-void	push_setup(int target, t_list **stack)
+void	swap_two(t_list **stack)
 {
-	while (*stack && ((*stack)->content != target))
+	t_list	*node;
+
+	if ((*stack)->content <= (*stack)->next->content)
+		return ;
+	node = (*stack)->next;
+	(*stack)->prev = node;
+	(*stack)->next = NULL;
+	node->next = *stack;
+	*stack = node;
+	node->prev = NULL;
+}
+
+void	push(t_list **stack_start, t_list **stack_end)
+{
+	t_list	*node_push;
+	t_list	*nfirst_node;
+
+	if (!(*stack_start))
+		return ;
+	node_push = *stack_start;
+	if (node_push->next == NULL)
+		*stack_start = NULL;
+	else
 	{
-		rotate(stack);
-		printf("rb\n");
+		nfirst_node = node_push->next;
+		nfirst_node->prev = NULL;
+		*stack_start = nfirst_node;
+	}
+	if (*stack_end)
+	{
+		node_push->prev = NULL;
+		node_push->next = *stack_end;
+		(*stack_end)->prev = node_push;
+		*stack_end = node_push;
+	}
+	else
+	{
+		node_push->prev = NULL;
+		node_push->next = NULL;
+		*stack_end = node_push;
 	}
 }
 
-void	what_sort(t_list **stack_a, t_list **stack_b, size_t i)
+void	rotate(t_list **stack)
 {
-	if (i == 2)
-	{
-		swap_two(stack_a);
-		printf("sa\n");
-	}
-	else if (i == 3)
-		sort_three(stack_a);
-	else if (i > 3)
-		sort(stack_a, stack_b);
+	t_list	*nfirst_node;
+	t_list	*nlast_node;
+	t_list	*last_node;
+
+	if (!(*stack))
+		return ;
+	nfirst_node = (*stack)->next;
+	nlast_node = *stack;
+	last_node = ft_lstlast(*stack);
+	last_node->next = nlast_node;
+	nlast_node->prev = last_node;
+	nlast_node->next = NULL;
+	*stack = nfirst_node;
+	(*stack)->prev = NULL;
+}
+
+void	reverse_rotate(t_list **stack)
+{
+	t_list	*nfirst_node;
+	t_list	*nlast_node;
+	t_list	*lfisrt_node;
+
+	if (!(*stack))
+		return ;
+	lfisrt_node = *stack;
+	nfirst_node = ft_lstlast(*stack);
+	nlast_node = nfirst_node->prev;
+	lfisrt_node->prev = nfirst_node;
+	nfirst_node->next = lfisrt_node;
+	*stack = nfirst_node;
+	nlast_node->next = NULL;
+	nfirst_node->prev = NULL;
 }

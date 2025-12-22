@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 14:00:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:09:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ void	print(t_list *stack_a, t_list * stack_b)
 		}
 		printf("\n");
 	}
+}
+
+void	what_sort(t_list **stack_a, t_list **stack_b, size_t i)
+{
+	if (i == 2)
+	{
+		swap_two(stack_a);
+		printf("sa\n");
+	}
+	else if (i == 3)
+		sort_three(stack_a);
+	else if (i > 3 && i <= 5)
+		sort_four_five(stack_a, stack_b);
+	else if (i > 5)
+		sort(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
