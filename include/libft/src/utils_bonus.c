@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:51:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/09 15:53:06 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/23 09:20:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,6 @@ void	ft_lstiter(t_list *lst, void (*f)(int))
 		f(lst->content);
 		lst = lst->next;
 	}
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int	count;
-
-	count = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		count++;
-	}
-	return (count);
 }
 
 t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))

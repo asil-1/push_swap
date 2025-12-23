@@ -34,7 +34,8 @@ SRC= function_fd.c \
 	ft_strmapi.c \
 	ft_striteri.c \
 	create_node_bonus.c \
-	utils_node_bonus.c
+	utils_bonus.c \
+	utils2_bonus.c
 
 OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
 OBJ_DIR= $(sort $(shell dirname $(OBJ)))
