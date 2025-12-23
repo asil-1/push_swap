@@ -15,7 +15,8 @@ SRC= push_swap.c \
 	init_fct.c \
 	push_fct.c \
 	utils.c \
-	sort.c
+	sort.c \
+	truck_algo.c
 
 OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
 DEPS= $(SRC:%.c=$(BUILD_DIR)%.d)

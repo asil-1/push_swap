@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 17:25:13 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 18:53:30 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/23 10:47:35 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	push_to_target_increase(t_list **stack_start, t_list **stack_end)
 
 	node_push = (*stack_start)->content;
 	init_values(&values, node_push, *stack_end);
+	printf("higher value %d\n", values.higher);
 	if (node_push > values.max || node_push < values.min)
 		push_setup(values.max, stack_end);
 	else if (node_push < values.max)

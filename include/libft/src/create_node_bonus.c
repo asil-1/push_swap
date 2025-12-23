@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:44:29 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/21 16:07:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:39:39 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ t_list	*ft_newnode(int content)
 	ft_memset(new, 0, sizeof(t_list));
 	new->content = content;
 	return (new);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst && lst->next != NULL)
-		lst = lst->next;
-	return (lst);
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)

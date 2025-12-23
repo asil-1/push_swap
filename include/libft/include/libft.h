@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/23 10:06:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:38:31 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct s_list
 
 //create_node_bonus
 t_list	*ft_newnode(int content);
-t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
@@ -82,5 +81,7 @@ t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int));
 //utils2_bonus
 int		ft_lstsize(t_list *lst);
 int		ft_lstnsize(t_list *lst, int nb);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstfirst(t_list *lst);
 
 #endif

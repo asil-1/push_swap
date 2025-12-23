@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 12:07:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 20:35:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:17:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	sort(t_list **stack_a, t_list **stack_b)
 		printf("pb\n");
 	}
 	sort_three(stack_a);
-	
+	init_cost(stack_a, stack_b);
 }
 
