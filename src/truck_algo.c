@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/23 16:37:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:38:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,50 @@
 /*calcul du cout pour passer mon chiffre target en haut de la stack*/
 void	move_to_the_top(t_list **stack)
 {
-	int	index;
-	int	total_node;
-	t_list	*tmp;
+	int		index;
+	int		total_node;
+	t_list	*inode;
 
 	total_node = ft_lstsize(*stack);
-	tmp = *stack;
-	while (*stack)
+	inode = *stack;
+	while (inode)
 	{
-		index = ft_lstnsize(tmp, (*stack)->content);
+		index = ft_lstnsize(*stack, inode->content);
 		if (index <= (total_node / 2))
-			(*stack)->top_of_cost = index;
+			inode->top_of_cost = index;
 		else
-			(*stack)->top_of_cost = total_node - index;
-		*stack = (*stack)->next;
+			inode->top_of_cost = total_node - index;
+		inode = inode->next;
 	}
 }
 /*befor this, push all except three */
 void	init_cost(t_list **stack_a, t_list **stack_b)
 {
+	t_list		*inode;
+	t_list		*t_node;
 	t_targets	value;
 	int			target;
 
 	move_to_the_top(stack_b);
 	move_to_the_top(stack_a);
-	
-	while ((*stack_b)->next != NULL)
+	inode = *stack_b;
+	while (inode)
 	{
-		init_values(&value, (*stack_b)->content, *stack_a);
-		printf("higher value %d\n", value.higher);
-		if ((*stack_b)->content > value.max || (*stack_b)->content < value.min)
-			target = value.max;
-		else if ((*stack_b)->content < value.max)
+		/*find the taregt*/
+		init_values(&value, inode->content, *stack_a);
+		printf("\n%d\n", inode->content);
+		if (inode->content > value.max || inode->content < value.min)
+			target = value.min;
+		else
 			target = value.higher;
-		while (*stack_a && ((*stack_a)->content != target))
-			*stack_a = (*stack_a)->next;
-		(*stack_b)->total_cost = (*stack_b)->top_of_cost + (*stack_a)->top_of_cost;
-		printf("total cost %d\n", (*stack_b)->total_cost);
-		*stack_b = (*stack_b)->next;
+		printf("top of cost b %d\n", inode->top_of_cost);
+		t_node = *stack_a;
+		while (t_node && t_node->content != target)
+			t_node = t_node->next;
+		printf("target %d\n", target);
+		printf("top of cost a %d\n", t_node->top_of_cost);
+		inode->total_cost = inode->top_of_cost + t_node->top_of_cost;
+		printf("total cost %d\n", inode->total_cost);
+		inode = inode->next;
 	}
 }

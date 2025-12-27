@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:58:53 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 18:21:51 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:38:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	init_values(t_targets *values, int nb, t_list *stack)
 	while (stack)
 	{
 		content = stack->content;
-		if (content >= values->lower && content < nb)
-			values->lower = content;
+		// if (content >= values->lower && content < nb)
+		// 	values->lower = content;
 		if (content <= values->higher && content > nb)
 			values->higher = content;
 		stack = stack->next;

@@ -1,6 +1,6 @@
 a.out
+push_swap
 .vscode
 libft.a
 *.o
 /obj
-push_swap
