@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/23 16:38:31 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/28 10:25:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_list
 {
 	int				top_of_cost;
 	int				total_cost;
+	int				target;
 	int				content;
 	struct s_list	*prev;
 	struct s_list	*next;

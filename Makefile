@@ -12,11 +12,11 @@ LIBFT=include/libft/libft.a
 
 SRC= push_swap.c \
 	parsing.c \
-	init_fct.c \
-	push_fct.c \
+	operations.c \
 	utils.c \
 	sort.c \
-	truck_algo.c
+	truck_algo.c \
+	push_setup.c
 
 OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
 DEPS= $(SRC:%.c=$(BUILD_DIR)%.d)

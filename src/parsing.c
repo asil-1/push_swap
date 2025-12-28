@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:33:15 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 19:23:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/28 11:44:10 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	**parsing(int argc, char **argv)
 		while (args[i])
 		{
 			if (!valid_argument(args[i])
-				|| (ft_atol(args[i + 1]) == ft_atol(args[loop]) && args[i + 1]))
+				|| (args[i + 1] && ft_atol(args[i + 1]) == ft_atol(args[loop])))
 			{
 				free_split(args);
 				return (NULL);

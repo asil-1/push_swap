@@ -6,14 +6,16 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/27 19:38:03 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:32:02 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*calcul du cout pour passer mon chiffre target en haut de la stack*/
-void	move_to_the_top(t_list **stack)
+/**
+* @brief calcul of the cost required to place each nb at the top of the stack
+*/
+void	top_cost(t_list **stack)
 {
 	int		index;
 	int		total_node;
@@ -31,34 +33,52 @@ void	move_to_the_top(t_list **stack)
 		inode = inode->next;
 	}
 }
-/*befor this, push all except three */
+
+/**
+* @brief calcul the total cost for push the nb in the stack_a
+* @param stack_b, stack_a
+*/
+void	push_cost(t_list **stack_b,t_list **stack_a)
+{
+	t_targets	value;
+	t_list		*b;
+	t_list		*a;
+
+	b = *stack_b;
+	while (b)
+	{
+		init_values(&value, b->content, *stack_a);
+		if (b->content > value.max || b->content < value.min)
+			b->target = value.min;
+		else
+			b->target = value.higher;
+		a = *stack_a;
+		while (a && a->content != b->target)
+			a = a->next;
+		b->total_cost = b->top_of_cost + a->top_of_cost;
+		b = b->next;
+	}
+}
+
 void	init_cost(t_list **stack_a, t_list **stack_b)
 {
-	t_list		*inode;
-	t_list		*t_node;
-	t_targets	value;
-	int			target;
+	t_list	*min_cost;
+	t_list	*b;
 
-	move_to_the_top(stack_b);
-	move_to_the_top(stack_a);
-	inode = *stack_b;
-	while (inode)
+	while (*stack_b)
 	{
-		/*find the taregt*/
-		init_values(&value, inode->content, *stack_a);
-		printf("\n%d\n", inode->content);
-		if (inode->content > value.max || inode->content < value.min)
-			target = value.min;
-		else
-			target = value.higher;
-		printf("top of cost b %d\n", inode->top_of_cost);
-		t_node = *stack_a;
-		while (t_node && t_node->content != target)
-			t_node = t_node->next;
-		printf("target %d\n", target);
-		printf("top of cost a %d\n", t_node->top_of_cost);
-		inode->total_cost = inode->top_of_cost + t_node->top_of_cost;
-		printf("total cost %d\n", inode->total_cost);
-		inode = inode->next;
+		top_cost(stack_b);
+		top_cost(stack_a);
+		push_cost(stack_b, stack_a);
+		b = *stack_b;
+		min_cost = b;
+		while (b)
+		{
+			if (b->total_cost < min_cost->total_cost)
+				min_cost = b;
+			b = b->next;
+		}
+		push_setup(min_cost, stack_a, stack_b);
+		push(stack_b, stack_a, 1, 0);
 	}
 }

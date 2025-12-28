@@ -5,117 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/22 17:28:03 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/22 11:58:53 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/28 16:05:22 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/**
-* @brief Swap for more 2 nb.
-*/
-void	swap(t_list **stack)
+int	smaller_nb(t_list *node)
 {
-	t_list	*nfirst_node;
-	t_list	*third_node;
+	int	nb;
 
-	if (!(*stack))
-		return ;
-	nfirst_node = (*stack)->next;
-	third_node = nfirst_node->next;
-	third_node->prev = *stack;
-	(*stack)->prev = nfirst_node;
-	(*stack)->next = third_node;
-	nfirst_node->next = *stack;
-	nfirst_node->prev = NULL;
-	*stack = nfirst_node;
+	nb = node->content;
+	while (node->next != NULL)
+	{
+		if (node->content < nb)
+			nb = node->content;
+		node = node->next;
+	}
+	if (node->content < nb)
+		nb = node->content;
+	return (nb);
 }
 
-/**
-* @brief Sort 2 numbers.
-* @warning Not more 2 numbers.
-* @param stack
-* @details dfsdfsdfsdfsdfsdf
-* @return Nothing.
-*/
-void	swap_two(t_list **stack)
+int	greater_nb(t_list *node)
+{
+	int	nb;
+
+	nb = node->content;
+	while (node->next != NULL)
+	{
+		if (node->content > nb)
+			nb = node->content;
+		node = node->next;
+	}
+	if (node->content > nb)
+		nb = node->content;
+	return (nb);
+}
+
+void	init_stack_a(t_list	**stack_a, int content)
 {
 	t_list	*node;
 
-	if ((*stack)->content <= (*stack)->next->content)
-		return ;
-	node = (*stack)->next;
-	(*stack)->prev = node;
-	(*stack)->next = NULL;
-	node->next = *stack;
-	*stack = node;
-	node->prev = NULL;
+	node = ft_newnode(content);
+	ft_lstadd_back(stack_a, node);
 }
 
-void	push(t_list **stack_start, t_list **stack_end)
+/**
+* @brief define max and min values to the t_list *stack.
+*	And higher than the t_targets *value.
+* @param value_to_be_initialised, compared_to_this_nb, in_this_stack
+*/
+void	init_values(t_targets *values, int nb, t_list *stack)
 {
-	t_list	*node_push;
-	t_list	*nfirst_node;
+	int	content;
+	t_list	*tmp;
 
-	if (!(*stack_start))
-		return ;
-	node_push = *stack_start;
-	if (node_push->next == NULL)
-		*stack_start = NULL;
-	else
+	tmp = stack;
+	values->min = smaller_nb(stack);
+	values->max = greater_nb(stack);
+	values->higher = values->max;
+	while (stack)
 	{
-		nfirst_node = node_push->next;
-		nfirst_node->prev = NULL;
-		*stack_start = nfirst_node;
+		content = stack->content;
+		if (content <= values->higher && content > nb)
+			values->higher = content;
+		stack = stack->next;
 	}
-	if (*stack_end)
-	{
-		node_push->prev = NULL;
-		node_push->next = *stack_end;
-		(*stack_end)->prev = node_push;
-		*stack_end = node_push;
-	}
-	else
-	{
-		node_push->prev = NULL;
-		node_push->next = NULL;
-		*stack_end = node_push;
-	}
-}
-
-void	rotate(t_list **stack)
-{
-	t_list	*nfirst_node;
-	t_list	*nlast_node;
-	t_list	*last_node;
-
-	if (!(*stack))
-		return ;
-	nfirst_node = (*stack)->next;
-	nlast_node = *stack;
-	last_node = ft_lstlast(*stack);
-	last_node->next = nlast_node;
-	nlast_node->prev = last_node;
-	nlast_node->next = NULL;
-	*stack = nfirst_node;
-	(*stack)->prev = NULL;
-}
-
-void	reverse_rotate(t_list **stack)
-{
-	t_list	*nfirst_node;
-	t_list	*nlast_node;
-	t_list	*lfisrt_node;
-
-	if (!(*stack))
-		return ;
-	lfisrt_node = *stack;
-	nfirst_node = ft_lstlast(*stack);
-	nlast_node = nfirst_node->prev;
-	lfisrt_node->prev = nfirst_node;
-	nfirst_node->next = lfisrt_node;
-	*stack = nfirst_node;
-	nlast_node->next = NULL;
-	nfirst_node->prev = NULL;
 }

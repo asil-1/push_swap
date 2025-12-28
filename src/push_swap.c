@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/23 09:59:43 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:17:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print(t_list *stack_a, t_list * stack_b)
 {
-	write (1, "sa:\tsb:\n", 9);
+	write (1, "\nsa:\tsb:\n", 9);
 
 	t_list	*tmp_a;
 	t_list	*tmp_b;
@@ -42,21 +42,6 @@ void	print(t_list *stack_a, t_list * stack_b)
 		}
 		printf("\n");
 	}
-}
-
-void	what_sort(t_list **stack_a, t_list **stack_b, size_t i)
-{
-	if (i == 2)
-	{
-		swap_two(stack_a);
-		printf("sa\n");
-	}
-	else if (i == 3)
-		sort_three(stack_a);
-	else if (i > 3 && i <= 5)
-		sort_four_five(stack_a, stack_b);
-	else if (i > 5)
-		sort(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)

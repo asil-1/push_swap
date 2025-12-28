@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/23 16:16:53 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/28 16:37:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,43 @@
 # include <unistd.h>
 # include <stdio.h> // a enlever
 
+typedef struct s_target_values
+{
+	int	max;
+	int	min;
+	int	higher;
+}	t_targets;
+
 //push_swap.c
-void	what_sort(t_list **stack_a, t_list **stack_b, size_t i);
 int		main(int argc, char **argv);
 
 //parsing.c
 char	**parsing(int argc, char **argv);
 
-//utils.c
-void	swap(t_list **stack);
-void	swap_two(t_list **stack);
-void	push(t_list **stack_a, t_list **stack_b); /* @warning function too long*/
-void	rotate(t_list **stack);
-void	reverse_rotate(t_list **stack);
-
-typedef struct s_target_values
-{
-	int	max;
-	int	min;
-	int	lower;
-	int	higher;
-}	t_targets;
-
-//init_function.c
-int		smaller_nb(t_list *node);
-int		greater_nb(t_list *node);
-void	init_stack_a(t_list	**stack_a, int content);
-void	init_values(t_targets *values, int nb, t_list *stack);
-
-//push_functions.c
-void	push_setup(int target, t_list **stack); /*change name, place le traget en au de la pile*/
-void	push_to_target_decrease(t_list **stack_start, t_list **stack_end);
-void	push_to_target_increase(t_list **stack_start, t_list **stack_end);
+//operations.c
+void	swap(t_list **stack, int a, int b);
+void	push(t_list **stack_a, t_list **stack_b, int a, int b);
+void	rotate(t_list **stack, int a, int b);
+void	reverse_rotate(t_list **stack, int a, int b);
 
 //sort.c
+void	what_sort(t_list **stack_a, t_list **stack_b, size_t i);
 void	sort_three(t_list **stack);
 void	sort_four_five(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
 
 //truk_algo.c
 void	init_cost(t_list **stack_a, t_list **stack_b);
+void	top_cost(t_list **stack);
+void	push_cost(t_list **stack_b,t_list **stack_a);
+
+//utils.c
+int		smaller_nb(t_list *node);
+int		greater_nb(t_list *node);
+void	init_stack_a(t_list	**stack_a, int content);
+void	init_values(t_targets *values, int nb, t_list *stack);
+
+//push_setup.c
+void	push_setup(t_list *node, t_list **a, t_list **b);
 
 #endif
