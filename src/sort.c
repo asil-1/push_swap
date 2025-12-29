@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 12:07:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 14:22:56 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 14:01:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,26 @@ static void	swap_two(t_list **stack)
 
 void	what_sort(t_list **stack_a, t_list **stack_b, size_t i)
 {
+	t_list	*a;
+	int		node;
+	int		n_node;
+
+	a = *stack_a;
+	while (a)
+	{
+		node = a->content;
+		if (a->next != NULL)
+			n_node = a->next->content;
+		if (node > n_node)
+			break ;
+		a = a->next;
+	}
+	if (!a)
+		return ;
 	if (i == 2)
 		swap_two(stack_a);
 	else if (i == 3)
 		sort_three(stack_a);
-	// else if (i > 3 && i <= 5)
-		// sort_four_five(stack_a, stack_b);
 	else if (i > 3)
 		sort(stack_a, stack_b);
 }
@@ -54,16 +68,6 @@ void	sort_three(t_list **stack)
 		swap(stack, 1, 0);
 }
 
-void	sort_four_five(t_list **stack_a, t_list **stack_b)
-{
-	while (ft_lstsize(*stack_a) > 3)
-		push(stack_a, stack_b, 0, 1);
-	sort_three(stack_a);
-	// while(*stack_b)	/** @todo reparer ca */
-		// push_to_target_increase(stack_b, stack_a);
-	// push_setup(smaller_nb(*stack_a), stack_a, stack_b);
-}
-
 void	sort(t_list **stack_a, t_list **stack_b)
 {
 	while (ft_lstsize(*stack_a) > 3)
@@ -71,4 +75,3 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	sort_three(stack_a);
 	init_cost(stack_a, stack_b);
 }
-

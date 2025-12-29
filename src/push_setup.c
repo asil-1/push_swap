@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:03:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 10:47:17 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 11:07:56 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,14 @@ static void	reverse_rotate_a_or_b(t_list **a, t_list **b, t_list *node)
 */
 void	push_setup(t_list *node, t_list **a, t_list **b)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	int	move;
 
-	stack_a = *a;
-	stack_b = *b;
-	if (move_a(a, node) == 1 || move_b(b, node) == 1)
+	// if (*b)
+		move = move_b(b, node);
+	// else
+	// 	move = 0;
+	if (move_a(a, node) == 1 || move == 1)
 		rotate_a_or_b(a, b, node);
-	if (move_a(a, node) == 2 || move_b(b, node) == 2)
+	if (move_a(a, node) == 2 || move == 2)
 		reverse_rotate_a_or_b(a, b, node);
 }

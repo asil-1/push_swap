@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 09:28:06 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 13:53:01 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	reverse_rotate(t_list **stack, int a, int b);
 //sort.c
 void	what_sort(t_list **stack_a, t_list **stack_b, size_t i);
 void	sort_three(t_list **stack);
-void	sort_four_five(t_list **stack_a, t_list **stack_b);
+// void	sort_four_five(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
 
 //truk_algo.c
@@ -50,7 +50,7 @@ void	push_cost(t_list **stack_b,t_list **stack_a);
 //utils.c
 int		smaller_nb(t_list *node);
 int		greater_nb(t_list *node);
-void	init_stack_a(t_list	**stack_a, int content);
+void	init_stack_a(t_list **stack_a, int content);
 void	init_values(t_targets *values, int nb, t_list *stack);
 
 //push_setup.c

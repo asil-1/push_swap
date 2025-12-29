@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 17:17:28 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 15:56:22 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	print(t_list *stack_a, t_list * stack_b)
 {
-	write (1, "\nsa:\tsb:\n", 9);
-
 	t_list	*tmp_a;
 	t_list	*tmp_b;
 	t_list	*tmp_a2;
@@ -23,7 +21,7 @@ void	print(t_list *stack_a, t_list * stack_b)
 
 	tmp_a = stack_a;
 	tmp_b = stack_b;
-
+	write (1, "\nsa:\tsb:\n", 9);
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a)
@@ -61,13 +59,13 @@ int	main(int argc, char **argv)
 	}
 	i = 0;
 	stack_a = NULL;
-	stack_b = NULL; /*la faire apparaitre dans la fonction de tri direct, la faire apparaitre ici ne sert que a l'afiichage*/
+	stack_b = NULL;
 	while (args[i])
 	{
 		init_stack_a(&stack_a, ft_atoi(args[i]));
 		free(args[i]);
 		i++;
-	} /*mettre cette boucle dans une autre fonction*/
+	}
 	free(args);
 	what_sort(&stack_a, &stack_b, i);
 	print(stack_a, stack_b);

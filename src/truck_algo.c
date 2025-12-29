@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 10:47:33 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 11:07:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ void	push_cost(t_list **stack_b,t_list **stack_a)
 	}
 }
 
+void	formatting(t_list *min, t_list **stack_a, t_list **stack_b)
+{
+	min->target = smaller_nb(*stack_a);
+	while ((*stack_a)->content != min->target)
+		push_setup(min, stack_a, stack_b);
+}
+
 void	init_cost(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*min_cost;
@@ -84,4 +91,5 @@ void	init_cost(t_list **stack_a, t_list **stack_b)
 			push_setup(min_cost, stack_a, stack_b);
 		push(stack_b, stack_a, 1, 0);
 	}
+	formatting(min_cost, stack_a, stack_b);
 }

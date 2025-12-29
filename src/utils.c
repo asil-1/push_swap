@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:58:53 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 16:05:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 13:53:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	greater_nb(t_list *node)
 	return (nb);
 }
 
-void	init_stack_a(t_list	**stack_a, int content)
+void	init_stack_a(t_list **stack_a, int content)
 {
 	t_list	*node;
 

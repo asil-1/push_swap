@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:33:15 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 11:44:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 15:20:40 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,30 @@ static void	free_split(char **args)
 	free(args);
 }
 
+static int	digit_argument(char **argv)
+{
+	long	i;
+	long	j;
+	long	digit;
+
+	i = 0;
+	while (argv[i])
+	{
+		digit = 0;
+		j = 0;
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j]))
+				digit++;
+			j++;
+		}
+		if (digit == 0)
+		return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	valid_argument(char *arg)
 {
 	size_t	digit;
@@ -36,20 +60,20 @@ static int	valid_argument(char *arg)
 	while (arg[i])
 	{
 		digit = 0;
-		while (arg[i] && (arg[i] == '-' || arg[i] == '+'))
+		if (arg[i] == '-' || arg[i] == '+')
 			i++;
-		if (!ft_isdigit(arg[i]))
-			return (0);
-		while (arg[i] && ft_isdigit(arg[i]))
+		while (arg[i])
 		{
+			if (!ft_isdigit(arg[i]))
+				return (0);
 			digit++;
 			i++;
 		}
 	}
-	if (digit > 0)
-		return (1);
-	else
+	if (digit == 0)
 		return (0);
+	else
+		return (1);
 }
 
 static void	join_and_split(int argc, char **argv, char ***args)
@@ -84,6 +108,8 @@ char	**parsing(int argc, char **argv)
 
 	i = 0;
 	loop = 0;
+	if (!digit_argument(argv))
+		return (NULL);
 	join_and_split(argc, argv, &args);
 	while (args[loop])
 	{
