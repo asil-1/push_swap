@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 11:07:12 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 19:28:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ void	init_cost(t_list **stack_a, t_list **stack_b)
 				min_cost = b;
 			b = b->next;
 		}
-		while ((*stack_a && *stack_b)
-		&& ((*stack_a)->content != min_cost->target
-		|| (*stack_b)->content != min_cost->content))
+		while ((*stack_a && *stack_b) && ((*stack_a)->content != min_cost->target || (*stack_b)->content != min_cost->content))
 			push_setup(min_cost, stack_a, stack_b);
 		push(stack_b, stack_a, 1, 0);
 	}

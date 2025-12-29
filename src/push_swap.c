@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:16:41 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 15:56:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 19:22:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,27 @@ void	print(t_list *stack_a, t_list * stack_b)
 {
 	t_list	*tmp_a;
 	t_list	*tmp_b;
-	t_list	*tmp_a2;
-	t_list	*tmp_b2;
 
 	tmp_a = stack_a;
 	tmp_b = stack_b;
-	write (1, "\nsa:\tsb:\n", 9);
-	while (tmp_a || tmp_b)
+	// write (1, "\nsa:\tsb:\n", 9);
+	while (stack_a || stack_b)
 	{
-		if (tmp_a)
+		if (stack_a)
 		{
-			printf("%d", tmp_a->content);
-			tmp_a2 = tmp_a;
-			tmp_a = tmp_a->next;
-			free(tmp_a2);
+			// printf("%d", stack_a->content);
+			tmp_a = stack_a;
+			stack_a = stack_a->next;
+			free(tmp_a);
 		}
-		if (tmp_b)
+		if (stack_b)
 		{
-			printf("\t%d", tmp_b->content);
-			tmp_b2 = tmp_b;
-			tmp_b = tmp_b->next;
-			free(tmp_b2);
+			// printf("\t%d", stack_b->content);
+			tmp_b = stack_b;
+			stack_b = stack_b->next;
+			free(tmp_b);
 		}
-		printf("\n");
+		// printf("\n");
 	}
 }
 
