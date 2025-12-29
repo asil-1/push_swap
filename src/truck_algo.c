@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 17:32:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 10:43:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	push_cost(t_list **stack_b,t_list **stack_a)
 		if (b->content > value.max || b->content < value.min)
 			b->target = value.min;
 		else
+		{
 			b->target = value.higher;
+			printf("higher -> nb %d\n", b->content);
+		}
 		a = *stack_a;
 		while (a && a->content != b->target)
 			a = a->next;
@@ -78,7 +81,9 @@ void	init_cost(t_list **stack_a, t_list **stack_b)
 				min_cost = b;
 			b = b->next;
 		}
-		push_setup(min_cost, stack_a, stack_b);
+		while ((*stack_a)->content != min_cost->target
+		|| (*stack_b)->content != min_cost->content)
+			push_setup(min_cost, stack_a, stack_b);
 		push(stack_b, stack_a, 1, 0);
 	}
 }
