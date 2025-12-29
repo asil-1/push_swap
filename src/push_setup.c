@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:03:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 10:42:19 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/29 10:47:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,8 @@ void	push_setup(t_list *node, t_list **a, t_list **b)
 
 	stack_a = *a;
 	stack_b = *b;
-	printf("node target %d\n", node->target);
-	printf("content %d\n", (*a)->content);
-	if ((stack_a && stack_b)
-		&& ((stack_a)->content != node->target
-		|| (stack_b)->content != node->content))
-	{
-		if (move_a(a, node) == 1 || move_b(b, node) == 1)
-			rotate_a_or_b(a, b, node);
-		if (move_a(a, node) == 2 || move_b(b, node) == 2)
-			reverse_rotate_a_or_b(a, b, node);
-	}
+	if (move_a(a, node) == 1 || move_b(b, node) == 1)
+		rotate_a_or_b(a, b, node);
+	if (move_a(a, node) == 2 || move_b(b, node) == 2)
+		reverse_rotate_a_or_b(a, b, node);
 }
