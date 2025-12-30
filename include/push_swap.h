@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 13:53:01 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/30 13:01:01 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	what_sort(t_list **stack_a, t_list **stack_b, size_t i);
 void	sort_three(t_list **stack);
 // void	sort_four_five(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
+void	swap_two(t_list **stack);
 
 //truk_algo.c
 void	init_cost(t_list **stack_a, t_list **stack_b);

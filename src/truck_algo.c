@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 20:41:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 19:28:03 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/30 13:54:56 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,27 @@ void	top_cost(t_list **stack)
 	}
 }
 
+void	opti_push_cost(t_list **stack_b,t_list **stack_a)
+{
+	t_list	*b;
+	t_list	*a;
+	int	i;
+
+	i = 0;
+	b = *stack_b;
+	a = *stack_a;
+	while ((ft_lstnsize(b, b->content) <= (ft_lstsize(b) /2 - i)) && ((ft_lstnsize(a, a->content) <= (ft_lstsize(a) /2 - i))))
+	{
+		b->total_cost--;
+		i++;
+	}
+}
+
 /**
 * @brief calcul the total cost for push the nb in the stack_a
 * @param stack_b, stack_a
 */
-void	push_cost(t_list **stack_b,t_list **stack_a)
+void	push_cost(t_list **stack_b, t_list **stack_a)
 {
 	t_targets	value;
 	t_list		*b;
@@ -56,6 +72,7 @@ void	push_cost(t_list **stack_b,t_list **stack_a)
 		while (a && a->content != b->target)
 			a = a->next;
 		b->total_cost = b->top_of_cost + a->top_of_cost;
+		opti_push_cost(stack_b, stack_a);
 		b = b->next;
 	}
 }

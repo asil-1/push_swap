@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/28 16:01:56 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/30 13:06:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ void	swap(t_list **stack, int a, int b)
 
 	if (!(*stack))
 		return ;
-	nfirst_node = (*stack)->next;
-	third_node = nfirst_node->next;
-	third_node->prev = *stack;
-	(*stack)->prev = nfirst_node;
-	(*stack)->next = third_node;
-	nfirst_node->next = *stack;
-	nfirst_node->prev = NULL;
-	*stack = nfirst_node;
+	if ((*stack)->next->next == NULL)
+		swap_two(stack);
+	else
+	{
+		nfirst_node = (*stack)->next;
+		third_node = nfirst_node->next;
+		third_node->prev = *stack;
+		(*stack)->prev = nfirst_node;
+		(*stack)->next = third_node;
+		nfirst_node->next = *stack;
+		nfirst_node->prev = NULL;
+		*stack = nfirst_node;
+	}
 	if (a && !b)
 		printf("sa\n");
 	else

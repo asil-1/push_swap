@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:03:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 19:27:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/30 13:54:52 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	move_a(t_list **a, t_list *node)
 	index = ft_lstnsize(*a, node->target);
 	if ((*a)->content != node->target)
 	{
-		if (index < (ft_lstsize(*a) / 2))
+		if (index <= (ft_lstsize(*a) / 2))
 			return (1);
 		else
 			return (2);
@@ -36,7 +36,7 @@ static int	move_b(t_list **b, t_list *node)
 	index = ft_lstnsize(*b, node->content);
 	if ((*b)->content != node->content)
 	{
-		if (index < (ft_lstsize(*b) / 2))
+		if (index <= (ft_lstsize(*b) / 2))
 			return (1);
 		else
 			return (2);
