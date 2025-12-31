@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:58:34 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/10 15:56:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/31 11:30:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (nb * sign);
 }
-

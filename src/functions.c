@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/11 14:42:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/30 13:06:58 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/31 11:48:32 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/31 12:15:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/**
-* @brief Swap for more 2 nb.
-*/
+static void	swap_two(t_list **stack)
+{
+	t_list	*node;
+
+	if ((*stack)->content < (*stack)->next->content)
+		return ;
+	node = (*stack)->next;
+	(*stack)->prev = node;
+	(*stack)->next = NULL;
+	node->next = *stack;
+	*stack = node;
+	node->prev = NULL;
+}
+
 void	swap(t_list **stack, int a, int b)
 {
 	t_list	*nfirst_node;
@@ -85,46 +96,18 @@ void	push(t_list **stack_start, t_list **stack_end, int a, int b)
 		printf("pb\n");
 }
 
-void	rotate(t_list **stack, int a, int b)
+void	formatting(t_list **stack_a)
 {
-	t_list	*nfirst_node;
-	t_list	*nlast_node;
-	t_list	*last_node;
+	int	min;
+	int	index;
 
-	if (!(*stack))
-		return ;
-	nfirst_node = (*stack)->next;
-	nlast_node = *stack;
-	last_node = ft_lstlast(*stack);
-	last_node->next = nlast_node;
-	nlast_node->prev = last_node;
-	nlast_node->next = NULL;
-	*stack = nfirst_node;
-	(*stack)->prev = NULL;
-	if (a && !b)
-		printf("ra\n");
-	else
-		printf("rb\n");
-}
-
-void	reverse_rotate(t_list **stack, int a, int b)
-{
-	t_list	*nfirst_node;
-	t_list	*nlast_node;
-	t_list	*lfisrt_node;
-
-	if (!(*stack))
-		return ;
-	lfisrt_node = *stack;
-	nfirst_node = ft_lstlast(*stack);
-	nlast_node = nfirst_node->prev;
-	lfisrt_node->prev = nfirst_node;
-	nfirst_node->next = lfisrt_node;
-	*stack = nfirst_node;
-	nlast_node->next = NULL;
-	nfirst_node->prev = NULL;
-	if (a && !b)
-		printf("rra\n");
-	else
-		printf("rrb\n");
+	min = smaller_nb(*stack_a);
+	while ((*stack_a)->content != min)
+	{
+		index = ft_lstnsize(*stack_a, min);
+		if (index <= ft_lstsize(*stack_a) / 2)
+			rotate(stack_a, 1, 0);
+		else
+			reverse_rotate(stack_a, 1, 0);
+	}
 }

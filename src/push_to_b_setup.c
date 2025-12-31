@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_setup.c                                       :+:      :+:    :+:   */
+/*   push_to_b_setup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/28 16:03:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/30 13:54:52 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/31 12:29:45 by ldepenne          #+#    #+#             */
+/*   Updated: 2025/12/31 12:30:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	move_a(t_list **a, t_list *node)
 {
 	int	index;
 
-	index = ft_lstnsize(*a, node->target);
-	if ((*a)->content != node->target)
+	index = ft_lstnsize(*a, node->content);
+	if ((*a)->content != node->content)
 	{
 		if (index <= (ft_lstsize(*a) / 2))
 			return (1);
@@ -33,8 +33,8 @@ static int	move_b(t_list **b, t_list *node)
 
 	if (ft_lstsize(*b) < 2)
 		return (0);
-	index = ft_lstnsize(*b, node->content);
-	if ((*b)->content != node->content)
+	index = ft_lstnsize(*b, node->target);
+	if ((*b)->content != node->target)
 	{
 		if (index <= (ft_lstsize(*b) / 2))
 			return (1);

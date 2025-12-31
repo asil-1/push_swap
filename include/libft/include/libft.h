@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/29 10:15:25 by ldepenne         ###   ########.fr       */
+/*   Updated: 2025/12/31 11:25:01 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,37 @@ int		ft_lstsize(t_list *lst);
 int		ft_lstnsize(t_list *lst, int nb);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstfirst(t_list *lst);
+
+// typedef struct s_node
+// {
+// 	int	value;
+// 	int	target;
+// 	int	total_cost;
+// 	int	top_of_cost;
+// }	t_node;
+
+// typedef struct s_list
+// {
+// 	void			*content;
+// 	struct s_list	*prev;
+// 	struct s_list	*next;
+// }	t_list;
+
+// //create_node_bonus
+// t_list	*ft_newnode(void *content);
+// void	ft_lstadd_front(t_list **lst, t_list *new);
+// void	ft_lstadd_back(t_list **lst, t_list *new);
+
+// //utils_bonus
+// void	ft_lstdelone(t_list *lst, void (*del)(void *));
+// void	ft_lstclear(t_list **lst, void (*del)(void *));
+// void	ft_lstiter(t_list *lst, void (*f)(void *));
+// t_list	*ft_lstmap(t_list *lst, int (*f)(void *), void (*del)(void *));
+
+// //utils2_bonus
+// int		ft_lstsize(t_list *lst);
+// int		ft_lstnsize(t_list *lst, int nb);
+// t_list	*ft_lstlast(t_list *lst);
+// t_list	*ft_lstfirst(t_list *lst);
 
 #endif
