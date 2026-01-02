@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:41:17 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 14:28:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/02 09:56:09 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ static void	sort_three(t_list **stack)
 
 static void	turk_sort(t_list **stack_a, t_list **stack_b)
 {
-	push_to_b(stack_a, stack_b);
+	while (ft_lstsize(*stack_a) > 3)
+		push_to_b(stack_a, stack_b);
 	sort_three(stack_a);
-	push_to_a(stack_a, stack_b);
+	while (*stack_b)
+		push_to_a(stack_a, stack_b);
 	formatting(stack_a);
 }
 
