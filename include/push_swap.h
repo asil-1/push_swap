@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 12:35:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/03 10:32:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/include/libft.h"
+# include "ft_printf/include/ft_printf.h"
 # include <unistd.h>
 # include <stdio.h> // a enlever
 

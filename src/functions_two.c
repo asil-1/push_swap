@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:56:07 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 12:31:34 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:09:25 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rotate(t_list **stack, int a, int b)
 	(*stack)->prev = NULL;
 	if (a && !b)
 		printf("ra\n");
-	else
+	else if (!a && b)
 		printf("rb\n");
 }
 
@@ -52,7 +52,7 @@ void	reverse_rotate(t_list **stack, int a, int b)
 	nfirst_node->prev = NULL;
 	if (a && !b)
 		printf("rra\n");
-	else
+	else if (!a && b)
 		printf("rrb\n");
 }
 
