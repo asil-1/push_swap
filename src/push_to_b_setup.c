@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:29:45 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 09:56:40 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:10:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,3 @@ void	push_setup(t_list *node, t_list **a, t_list **b)
 	if (move_a(a, node) == 2 || move_b(b, node) == 2)
 		reverse_rotate_a_or_b(a, b, node);
 }
-
-//enum

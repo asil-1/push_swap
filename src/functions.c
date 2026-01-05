@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:48:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 12:15:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:09:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	swap(t_list **stack, int a, int b)
 		*stack = nfirst_node;
 	}
 	if (a && !b)
-		printf("sa\n");
+		ft_printf("sa\n");
 	else
-		printf("sb\n");
+		ft_printf("sb\n");
 }
 
 static void	end_of_stack(t_list *node_push, t_list **stack_end)
@@ -91,9 +91,9 @@ void	push(t_list **stack_start, t_list **stack_end, int a, int b)
 	}
 	end_of_stack(node_push, stack_end);
 	if (a && !b)
-		printf("pa\n");
+		ft_printf("pa\n");
 	else
-		printf("pb\n");
+		ft_printf("pb\n");
 }
 
 void	formatting(t_list **stack_a)

@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS= -I $(INCLUDE) -I $(INCLUDE_LIBFT) -I $(INCLUDE_FT_PRINTF) -Wall -Wextra -Werror -MMD -MP -g
+CFLAGS= -I $(INCLUDE) -I $(INCLUDE_LIBFT) -I $(INCLUDE_FT_PRINTF) -Wall -Wextra -Werror -MMD -MP
 MAKEFLAGS+= --no-print-directory
 HEADER=push_swap.h
 NAME=push_swap

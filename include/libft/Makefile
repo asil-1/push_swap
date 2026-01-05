@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-I$(INCLUDE) -Wall -Wextra -Werror -g #enlever le -g
+CFLAGS=-I$(INCLUDE) -Wall -Wextra -Werror
 HEADER=libft.h
 
 NAME=libft.a

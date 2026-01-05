@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:34:02 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 09:39:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:10:13 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,20 @@ static void	free_stack(t_list *stack_a, t_list *stack_b)
 
 	tmp_a = stack_a;
 	tmp_b = stack_b;
-	// write (1, "\nsa:\tsb:\n", 9);
 	while (stack_a || stack_b)
 	{
 		if (stack_a)
 		{
-			// printf("%d", stack_a->content);
 			tmp_a = stack_a;
 			stack_a = stack_a->next;
 			free(tmp_a);
 		}
 		if (stack_b)
 		{
-			// printf("\t%d", stack_b->content);
 			tmp_b = stack_b;
 			stack_b = stack_b->next;
 			free(tmp_b);
 		}
-		// printf("\n");
 	}
 }
 

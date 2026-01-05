@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:41:43 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 11:42:13 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:12:53 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	digit_argument(char **argv)
 			j++;
 		}
 		if (digit == 0)
-		return (0);
+			return (0);
 		i++;
 	}
 	return (1);
