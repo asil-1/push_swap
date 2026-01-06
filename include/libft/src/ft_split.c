@@ -6,11 +6,10 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:28:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/08 17:02:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:50:25 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../include/libft.h"
 
 static size_t	ft_count_word(char *s, char sep)
@@ -118,27 +117,3 @@ char	**ft_split(char const *s, char c)
 	new[n] = NULL;
 	return (new);
 }
-
-// int	main(void)
-// {
-// 	char	**print;
-// 	char	*s = "les feuilles tombent de l'arbre";
-// 	char	sep = ' ';
-// 	size_t	nb_words;
-// 	size_t	i = 0;
-
-// 	nb_words = ft_count_word(s, sep);
-// 	print = ft_split(s, sep);
-// 	while (print[i])
-// 	{
-// 		printf("%s\n", print[i]);
-// 		i++;
-// 	}
-// 	printf("%s\n", print[i]);
-// 	while (i > 0)
-// 	{
-// 		i--;
-// 		free(print[i]);
-// 	}
-// 	free(print);
-// }

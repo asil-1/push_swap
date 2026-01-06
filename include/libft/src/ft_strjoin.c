@@ -6,11 +6,10 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 19:18:09 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/16 14:51:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:50:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../include/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -28,15 +27,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(join, s2, size);
 	return (join);
 }
-
-// int	main(void)
-// {
-// 	char	*s1 = NULL;
-// 	char	s2[] = " un test";
-// 	char	*result;
-
-// 	// result = ft_strlcat(s1, s2, ft_strlen(s1)+ft_strlen(s2) + 1);
-// 	result = ft_strjoin(s1, s2);
-// 	printf("%s\n", result);
-// 	free(result);
-// }

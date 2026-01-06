@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:29:45 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 19:10:38 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:39:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,56 +20,52 @@ static int	move_a(t_list **a, t_list *node)
 	if ((*a)->content != node->content)
 	{
 		if (index <= (ft_lstsize(*a) / 2))
-			return (1);
+			return (ROTATE);
 		else
-			return (2);
+			return (R_ROTATE);
 	}
-	return (0);
+	return (NO_MOVE);
 }
 
 static int	move_b(t_list **b, t_list *node)
 {
 	int	index;
 
-	if (ft_lstsize(*b) < 2)
-		return (0);
 	index = ft_lstnsize(*b, node->target);
 	if ((*b)->content != node->target)
 	{
 		if (index <= (ft_lstsize(*b) / 2))
-			return (1);
+			return (ROTATE);
 		else
-			return (2);
+			return (R_ROTATE);
 	}
-	return (0);
+	return (NO_MOVE);
 }
 
 static void	rotate_a_or_b(t_list **a, t_list **b, t_list *node)
 {
-	if (move_a(a, node) == 1 && move_b(b, node) == 1)
+	if (move_a(a, node) == ROTATE && move_b(b, node) == ROTATE)
 	{
-		rotate(a, 0, 0);
-		rotate(b, 0, 0);
-		printf("rr\n");
+		rotate(a, NO_PRINT);
+		rotate(b, PRINT_R);
 	}
-	else if (move_a(a, node) == 1 && move_b(b, node) != 1)
-		rotate(a, 1, 0);
-	else if (move_a(a, node) != 1 && move_b(b, node) == 1)
-		rotate(b, 0, 1);
+	else if (move_a(a, node) == ROTATE)
+		rotate(a, PRINT_A);
+	else if (move_b(b, node) == ROTATE)
+		rotate(b, PRINT_B);
 }
 
 static void	reverse_rotate_a_or_b(t_list **a, t_list **b, t_list *node)
 {
-	if (move_a(a, node) == 2 && move_b(b, node) == 2)
+	if (move_a(a, node) == R_ROTATE && move_b(b, node) == R_ROTATE)
 	{
-		reverse_rotate(a, 0, 0);
-		reverse_rotate(b, 0, 0);
-		printf("rrr\n");
+		reverse_rotate(a, NO_PRINT);
+		reverse_rotate(b, PRINT_R);
 	}
-	else if (move_a(a, node) == 2 && move_b(b, node) != 2)
-		reverse_rotate(a, 1, 0);
-	else if (move_a(a, node) != 2 && move_b(b, node) == 2)
-		reverse_rotate(b, 0, 1);
+	else if (move_a(a, node) == R_ROTATE)
+		reverse_rotate(a, PRINT_A);
+	else if (move_b(b, node) == R_ROTATE)
+		reverse_rotate(b, PRINT_B);
 }
 
 /**
@@ -77,8 +73,8 @@ static void	reverse_rotate_a_or_b(t_list **a, t_list **b, t_list *node)
 */
 void	push_setup(t_list *node, t_list **a, t_list **b)
 {
-	if (move_a(a, node) == 1 || move_b(b, node) == 1)
+	if (move_a(a, node) == ROTATE || move_b(b, node) == ROTATE)
 		rotate_a_or_b(a, b, node);
-	if (move_a(a, node) == 2 || move_b(b, node) == 2)
+	if (move_a(a, node) == R_ROTATE || move_b(b, node) == R_ROTATE)
 		reverse_rotate_a_or_b(a, b, node);
 }

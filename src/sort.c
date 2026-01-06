@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:41:17 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 12:56:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:27:44 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void	sort_three(t_list **stack)
 	node2 = s->next->content;
 	node3 = s->next->next->content;
 	if (node1 > node2 && node1 > node3)
-		rotate(stack, 1, 0);
+		rotate(stack, PRINT_A);
 	if (node2 > node1 && node2 > node1 && node2 > node3)
-		reverse_rotate(stack, 1, 0);
+		reverse_rotate(stack, PRINT_A);
 	if (node1 > node2 && node3 > node2 && node3 > node1)
-		swap(stack, 1, 0);
+		swap(stack, PRINT_A);
 	if (is_sort(stack))
 		sort_three(stack);
 }
@@ -69,7 +69,7 @@ void	sort(t_list **stack_a, t_list **stack_b, size_t nb_node)
 	if (!is_sort(stack_a))
 		return ;
 	if (nb_node == 2)
-		swap(stack_a, 1, 0);
+		swap(stack_a, PRINT_A);
 	else if (nb_node == 3)
 		sort_three(stack_a);
 	else if (nb_node > 3)

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/03 10:32:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:44:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,21 @@
 # include "libft/include/libft.h"
 # include "ft_printf/include/ft_printf.h"
 # include <unistd.h>
-# include <stdio.h> // a enlever
+
+typedef enum e_print
+{
+	NO_PRINT,
+	PRINT_A,
+	PRINT_B,
+	PRINT_R
+}	t_print;
+
+typedef enum e_move
+{
+	NO_MOVE,
+	ROTATE,
+	R_ROTATE
+}	t_move;
 
 typedef struct s_target_values
 {
@@ -39,13 +53,13 @@ int		init_stack(int argc, char **argv, t_list **stack_a);
 void	init_values(t_targets *values, int nb, t_list *stack);
 
 //functions.c
-void	swap(t_list **stack, int a, int b);
-void	push(t_list **stack_start, t_list **stack_end, int a, int b);
+void	swap(t_list **stack, t_print print);
+void	push(t_list **stack_start, t_list **stack_end, t_print print);
 void	formatting(t_list **stack_a);
 
 //functions_two.c
-void	rotate(t_list **stack, int a, int b);
-void	reverse_rotate(t_list **stack, int a, int b);
+void	rotate(t_list **stack, t_print print);
+void	reverse_rotate(t_list **stack, t_print print);
 
 //sort.c
 void	sort(t_list **stack_a, t_list **stack_b, size_t nb_node);

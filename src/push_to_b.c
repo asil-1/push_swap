@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:58:46 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 19:13:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:31:21 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	push_to_b(t_list **stack_a, t_list **stack_b)
 
 	if (!stack_b || ft_lstsize(*stack_b) < 2)
 	{
-		push(stack_a, stack_b, 0, 1);
+		push(stack_a, stack_b, PRINT_B);
 		return ;
 	}
 	total_cost(stack_a, stack_b);
@@ -103,5 +103,5 @@ void	push_to_b(t_list **stack_a, t_list **stack_b)
 	while ((*stack_a)->content != min_cost->content
 		|| (*stack_b)->content != min_cost->target)
 		push_setup(min_cost, stack_a, stack_b);
-	push(stack_a, stack_b, 0, 1);
+	push(stack_a, stack_b, PRINT_B);
 }

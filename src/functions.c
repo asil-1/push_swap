@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:48:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 19:09:42 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:44:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	swap_two(t_list **stack)
 	node->prev = NULL;
 }
 
-void	swap(t_list **stack, int a, int b)
+void	swap(t_list **stack, t_print print)
 {
 	t_list	*nfirst_node;
 	t_list	*third_node;
@@ -46,9 +46,9 @@ void	swap(t_list **stack, int a, int b)
 		nfirst_node->prev = NULL;
 		*stack = nfirst_node;
 	}
-	if (a && !b)
+	if (print == PRINT_A)
 		ft_printf("sa\n");
-	else
+	else if (print == PRINT_B)
 		ft_printf("sb\n");
 }
 
@@ -73,7 +73,7 @@ static void	end_of_stack(t_list *node_push, t_list **stack_end)
 * @brief from stack_start to stack_end
 * @param print_a, print_b or
 */
-void	push(t_list **stack_start, t_list **stack_end, int a, int b)
+void	push(t_list **stack_start, t_list **stack_end, t_print print)
 {
 	t_list	*node_push;
 	t_list	*nfirst_node;
@@ -90,9 +90,9 @@ void	push(t_list **stack_start, t_list **stack_end, int a, int b)
 		*stack_start = nfirst_node;
 	}
 	end_of_stack(node_push, stack_end);
-	if (a && !b)
+	if (print == PRINT_A)
 		ft_printf("pa\n");
-	else
+	else if (print == PRINT_B)
 		ft_printf("pb\n");
 }
 
@@ -106,8 +106,8 @@ void	formatting(t_list **stack_a)
 	{
 		index = ft_lstnsize(*stack_a, min);
 		if (index <= ft_lstsize(*stack_a) / 2)
-			rotate(stack_a, 1, 0);
+			rotate(stack_a, PRINT_A);
 		else
-			reverse_rotate(stack_a, 1, 0);
+			reverse_rotate(stack_a, PRINT_A);
 	}
 }

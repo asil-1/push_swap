@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:10:04 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/08 17:01:53 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:39:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,3 @@ char	*ft_itoa(int n)
 	convert_number(n, &str);
 	return (str);
 }
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	char	*str = ft_itoa(0);
-// 	printf("%s\n", str);
-// 	free(str);
-// }

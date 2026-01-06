@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:56:07 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 19:13:14 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:44:08 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rotate(t_list **stack, int a, int b)
+void	rotate(t_list **stack, t_print print)
 {
 	t_list	*nfirst_node;
 	t_list	*nlast_node;
@@ -28,13 +28,15 @@ void	rotate(t_list **stack, int a, int b)
 	nlast_node->next = NULL;
 	*stack = nfirst_node;
 	(*stack)->prev = NULL;
-	if (a && !b)
+	if (print == PRINT_R)
+		ft_printf("rr\n");
+	else if (print == PRINT_A)
 		ft_printf("ra\n");
-	else if (!a && b)
+	else if (print == PRINT_B)
 		ft_printf("rb\n");
 }
 
-void	reverse_rotate(t_list **stack, int a, int b)
+void	reverse_rotate(t_list **stack, t_print print)
 {
 	t_list	*nfirst_node;
 	t_list	*nlast_node;
@@ -50,8 +52,10 @@ void	reverse_rotate(t_list **stack, int a, int b)
 	*stack = nfirst_node;
 	nlast_node->next = NULL;
 	nfirst_node->prev = NULL;
-	if (a && !b)
+	if (print == PRINT_R)
+		ft_printf("rrr\n");
+	else if (print == PRINT_A)
 		ft_printf("rra\n");
-	else if (!a && b)
+	else if (print == PRINT_B)
 		ft_printf("rrb\n");
 }

@@ -6,19 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 20:45:59 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/08 17:02:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:41:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
-#include <stdio.h>
-
-//pas push cette fonction
-// char	mapi(unsigned int i, char c)
-// {
-// 	c = c + i;
-// 	return (c);
-// }
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -41,19 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	mapi[i] = '\0';
 	return (mapi);
 }
-
-// int	main(void)
-// {
-// 	char const	s[] = "raccoon rocket";
-// 	char	*print;
-
-// 	print = ft_strmapi(s, NULL);
-// 	printf("%s\n", print);
-// 	free(print);
-// }
-
-// void *F;
-
-// F = NULL;
-
-// ft_strmapi("hello", F);
