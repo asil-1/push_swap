@@ -1,22 +1,23 @@
-CC=cc
-CFLAGS= -I $(INCLUDE) -I $(INCLUDE_LIBFT) -I $(INCLUDE_FT_PRINTF) -Wall -Wextra -Werror -MMD -MP
-MAKEFLAGS+= --no-print-directory
-HEADER=push_swap.h
-NAME=push_swap
+CC = cc
+CFLAGS = $(ALL_INCLUDES) -Wall -Wextra -Werror -MMD -MP
+MAKEFLAGS += --no-print-directory
+HEADER = push_swap.h
+NAME = push_swap
 
-BUILD_DIR=obj/
-SRC_DIR=src/
-INCLUDE=include/
+BUILD_DIR = obj/
+SRC_DIR = src/
+INCLUDE = include/
+ALL_INCLUDES = -I $(INCLUDE) -I $(INCLUDE_LIBFT) -I $(INCLUDE_FT_PRINTF)
 
 #LIBFT
-INCLUDE_LIBFT=include/libft/
-LIBFT=include/libft/libft.a
+INCLUDE_LIBFT = include/libft/
+LIBFT = include/libft/libft.a
 
 #FT_PRINTF
-INCLUDE_FT_PRINTF=include/ft_printf/
-FT_PRINTF=include/ft_printf/libftprintf.a
+INCLUDE_FT_PRINTF = include/ft_printf/
+FT_PRINTF = include/ft_printf/libftprintf.a
 
-SRC= push_swap.c \
+SRC=push_swap.c \
 	parsing.c \
 	init_values.c \
 	functions.c \
@@ -26,9 +27,9 @@ SRC= push_swap.c \
 	push_to_b_setup.c \
 	push_to_a.c
 
-OBJ= $(SRC:%.c=$(BUILD_DIR)%.o)
-DEPS= $(SRC:%.c=$(BUILD_DIR)%.d)
-OBJ_DIR= $(sort $(shell dirname $(OBJ)))
+OBJ = $(SRC:%.c=$(BUILD_DIR)%.o)
+DEPS = $(SRC:%.c=$(BUILD_DIR)%.d)
+OBJ_DIR = $(sort $(shell dirname $(OBJ)))
 
 all: $(NAME)
 
