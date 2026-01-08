@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:38:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2025/12/31 12:17:18 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/08 13:25:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ int	greater_nb(t_list *node)
 */
 void	init_values(t_targets *values, int nb, t_list *stack)
 {
-	int		content;
-	t_list	*tmp;
+	int	content;
 
-	tmp = stack;
 	values->min = smaller_nb(stack);
 	values->max = greater_nb(stack);
 	values->lower = values->min;
