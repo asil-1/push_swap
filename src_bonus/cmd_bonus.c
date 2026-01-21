@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:15:02 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/21 12:39:20 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:20:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	is_sort_bonus(t_list **stack_a)
 			if (node > next_node)
 				break ;
 		}
+		if (a->next == NULL)
+			return (1);
 		a = a->next;
 	}
-	if (a)
-		return (0);
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 13:28:50 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/21 12:20:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:15:31 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int		cmd_bonus(t_list **stack_a, t_list **stack_b);
 int		is_sort_bonus(t_list **stack_a);
 
 //what_function_bonus.c
-int	what_swap(char *cmd, t_list **stack_a, t_list **stack_b);
-int	what_push(char *cmd, t_list **stack_a, t_list **stack_b);
-int	what_rotate(char *cmd, t_list **stack_a, t_list **stack_b);
+int		what_swap(char *cmd, t_list **stack_a, t_list **stack_b);
+int		what_push(char *cmd, t_list **stack_a, t_list **stack_b);
+int		what_rotate(char *cmd, t_list **stack_a, t_list **stack_b);
 
 //get_next_line_bonus.c
 char	*get_next_line(int fd);

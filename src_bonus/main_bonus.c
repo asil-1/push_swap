@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 14:40:38 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/21 12:49:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:18:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		return (0);
 	}
+	ft_printf("%d\n", is_sort_bonus(&stack_a));
 	if (ft_lstsize(stack_a) == argc - 1 && ft_lstsize(stack_b) == 0
 		&& is_sort_bonus(&stack_a))
 		ft_putendl_fd("OK", 1);
