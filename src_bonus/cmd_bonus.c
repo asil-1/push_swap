@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:15:02 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/21 15:20:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:49:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	what_cmd(char *cmd, t_list **stack_a, t_list **stack_b)
 		if (!what_rotate(cmd, stack_a, stack_b))
 			return (0);
 	}
+	else if (cmd[0] != 's' && cmd[0] != 'p' && cmd[0] != 'r')
+		return (0);
 	return (1);
 }
 
@@ -40,7 +42,10 @@ int	cmd_bonus(t_list **stack_a, t_list **stack_b)
 	while (cmd)
 	{
 		if (!what_cmd(cmd, stack_a, stack_b))
+		{
+			free(cmd);
 			return (0);
+		}
 		free(cmd);
 		cmd = get_next_line(0);
 	}
