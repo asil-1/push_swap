@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 16:58:34 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/20 17:06:58 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/10/23 19:21:55 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/01/19 16:51:00 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-long	ft_atol(const char *nptr)
+char	*ft_strndup(char *s, size_t n)
 {
-	long	sign;
-	long	nb;
+	size_t	i;
+	char	*result;
 
-	if (!nptr)
-		return (0);
-	sign = 1;
-	nb = 0;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	while (*nptr == '-' || *nptr == '+')
+	if (n > ft_strlen(s))
+		return (NULL);
+	result = malloc(sizeof(char) * (n + 1));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (s && i < n)
 	{
-		if (*nptr == '-')
-			sign *= -1;
-		nptr++;
+		result[i] = s[i];
+		i++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (i <= n)
 	{
-		nb = nb * 10 + (*nptr - '0');
-		nptr++;
+		result[i] = '\0';
+		i++;
 	}
-	return (nb * sign);
+	return (result);
 }

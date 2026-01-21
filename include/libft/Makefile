@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-I$(INCLUDE) -Wall -Wextra -Werror
+CFLAGS=-I$(INCLUDE) -Wall -Wextra -Werror -g
 HEADER=libft.h
 
 NAME=libft.a
@@ -25,9 +25,11 @@ SRC= function_fd.c \
 	ft_atol.c \
 	ft_calloc.c \
 	ft_strdup.c \
+	ft_strndup.c \
 	ft_substr.c \
 	ft_strjoin.c \
 	ft_strjoin_and_free.c \
+	ft_strjoin_space_and_free.c \
 	ft_strtrim.c \
 	ft_split.c \
 	ft_itoa.c \

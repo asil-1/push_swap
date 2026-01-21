@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin_and_free.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 16:58:34 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/20 17:06:58 by ldepenne         ###   ########.fr       */
+/*   Created: 2025/12/16 15:21:34 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/01/20 15:18:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-long	ft_atol(const char *nptr)
+char	*ft_strjoin_space_and_free(char *s1, char *s2)
 {
-	long	sign;
-	long	nb;
+	char	*result;
+	size_t	size;
+	size_t	i;
 
-	if (!nptr)
-		return (0);
-	sign = 1;
-	nb = 0;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	while (*nptr == '-' || *nptr == '+')
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	result = malloc(sizeof(char) * (size + 1));
+	if (!result)
 	{
-		if (*nptr == '-')
-			sign *= -1;
-		nptr++;
+		free(s1);
+		return (NULL);
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	i = 0;
+	while (s1[i])
 	{
-		nb = nb * 10 + (*nptr - '0');
-		nptr++;
+		result[i] = s1[i];
+		i++;
 	}
-	return (nb * sign);
+	result[i] = ' ';
+	result[i + 1] = '\0';
+	ft_memcpy(result + i + 1, s2, ft_strlen(s2) + 1);
+	free(s1);
+	return (result);
 }

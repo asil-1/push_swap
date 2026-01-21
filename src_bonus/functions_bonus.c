@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.c                                        :+:      :+:    :+:   */
+/*   functions_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:48:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/19 19:53:00 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:49:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	swap_two(t_list **stack)
 	node->prev = NULL;
 }
 
-void	swap(t_list **stack, t_print print)
+void	swap_bonus(t_list **stack)
 {
 	t_list	*nfirst_node;
 	t_list	*third_node;
@@ -46,10 +46,6 @@ void	swap(t_list **stack, t_print print)
 		nfirst_node->prev = NULL;
 		*stack = nfirst_node;
 	}
-	if (print == PRINT_A)
-		ft_printf("sa\n");
-	else if (print == PRINT_B)
-		ft_printf("sb\n");
 }
 
 static void	end_of_stack(t_list *node_push, t_list **stack_end)
@@ -73,7 +69,7 @@ static void	end_of_stack(t_list *node_push, t_list **stack_end)
 * @brief from stack_start to stack_end
 * @param print_a, print_b or
 */
-void	push(t_list **stack_start, t_list **stack_end, t_print print)
+void	push_bonus(t_list **stack_start, t_list **stack_end)
 {
 	t_list	*node_push;
 	t_list	*nfirst_node;
@@ -90,24 +86,4 @@ void	push(t_list **stack_start, t_list **stack_end, t_print print)
 		*stack_start = nfirst_node;
 	}
 	end_of_stack(node_push, stack_end);
-	if (print == PRINT_A)
-		ft_printf("pa\n");
-	else if (print == PRINT_B)
-		ft_printf("pb\n");
-}
-
-void	formatting(t_list **stack_a)
-{
-	int	min;
-	int	index;
-
-	min = smaller_nb(*stack_a);
-	while ((*stack_a)->content != min)
-	{
-		index = ft_lstnsize(*stack_a, min);
-		if (index <= ft_lstsize(*stack_a) / 2)
-			rotate(stack_a, PRINT_A);
-		else
-			reverse_rotate(stack_a, PRINT_A);
-	}
 }

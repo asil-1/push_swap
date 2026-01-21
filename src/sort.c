@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:41:17 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/08 13:27:31 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/19 20:55:48 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ static int	is_sort(t_list **stack_a)
 	{
 		node = a->content;
 		if (a->next != NULL)
+		{
 			next_node = a->next->content;
-		if (node > next_node)
-			break ;
+			if (node > next_node)
+				break ;
+		}
 		a = a->next;
 	}
 	if (!a)

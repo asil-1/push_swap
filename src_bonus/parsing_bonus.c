@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:41:43 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/21 09:48:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:36:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	is_so_long(char *arg)
 	int	lenght;
 
 	i = 0;
-	if (arg[i] && (arg[i] == '-' || arg[i] == '+'))
+	while (arg[i] && (arg[i] == '-' || arg[i] == '+'))
 		i++;
 	while (arg[i] && arg[i] == '0')
 		i++;
@@ -54,7 +54,7 @@ static int	is_so_long(char *arg)
 		i++;
 		lenght++;
 	}
-	if (lenght > 10)
+	if (lenght > 11)
 		return (0);
 	return (1);
 }
@@ -106,12 +106,10 @@ static int	join_and_split(int argc, char **argv, char ***args)
 	}
 	*args = ft_split(args_joins, ' ');
 	free(args_joins);
-	if (!*args)
-		return (0);
 	return (1);
 }
 
-char	**parsing(int argc, char **argv)
+char	**parsing_bonus(int argc, char **argv)
 {
 	long	i;
 	long	loop;
@@ -131,7 +129,7 @@ char	**parsing(int argc, char **argv)
 			if (!valid_argument(args[i])
 				|| (args[i + 1] && ft_atol(args[i + 1]) == ft_atol(args[loop])))
 			{
-				free_split(args);
+				free_split_bonus(args);
 				return (NULL);
 			}
 			i++;

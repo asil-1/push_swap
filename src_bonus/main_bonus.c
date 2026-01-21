@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/31 11:34:02 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/05 19:29:15 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/01/19 14:40:38 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/01/21 12:49:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,23 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	size_t	nb_node;
 
 	if (argc <= 1)
 		return (0);
-	nb_node = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	nb_node = init_stack(argc, argv, &stack_a);
-	sort(&stack_a, &stack_b, nb_node);
+	if (!init_stack_bonus(argc, argv, &stack_a))
+		return (0);
+	if (!cmd_bonus(&stack_a, &stack_b))
+	{
+		ft_putendl_fd("Error", 2);
+		return (0);
+	}
+	if (ft_lstsize(stack_a) == argc - 1 && ft_lstsize(stack_b) == 0
+		&& is_sort_bonus(&stack_a))
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
 	free_stack(stack_a, stack_b);
 	return (0);
 }
