@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:56:07 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/20 22:48:30 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:37:24 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rotate_bonus(t_list **stack)
 	t_list	*nlast_node;
 	t_list	*last_node;
 
-	if (!(*stack))
+	if (!(*stack) || (*stack)->next == NULL)
 		return ;
 	nfirst_node = (*stack)->next;
 	nlast_node = *stack;
@@ -36,7 +36,7 @@ void	reverse_rotate_bonus(t_list **stack)
 	t_list	*nlast_node;
 	t_list	*lfisrt_node;
 
-	if (!(*stack))
+	if (!(*stack) || (*stack)->next == NULL)
 		return ;
 	lfisrt_node = *stack;
 	nfirst_node = ft_lstlast(*stack);

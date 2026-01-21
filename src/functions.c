@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:48:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/01/19 19:53:00 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:38:05 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	swap(t_list **stack, t_print print)
 	t_list	*nfirst_node;
 	t_list	*third_node;
 
-	if (!(*stack))
+	if (!(*stack) || (*stack)->next == NULL)
 		return ;
 	if ((*stack)->next->next == NULL)
 		swap_two(stack);
